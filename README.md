@@ -1,6 +1,9 @@
 # mybatis-spring 的使用示例
 
 
+使用时需要在mysql数据库中执行文件中的user.sql，并修改spring-mybatis.xml中的连接信息
+
+
 ## MyBatis 基本用法
 
 
