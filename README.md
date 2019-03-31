@@ -41,7 +41,7 @@ session.close();
 
 
 
-二、 对于`SqlSession`,，提供`SqlSessionTemplate` ,  它线程安全（可以简单理解为每次创建新的SqlSession），提供了执行SQL方法，翻译异常功能
+二、 对于`SqlSession`，提供`SqlSessionTemplate`,  它线程安全（可以简单理解为每次创建新的SqlSession），提供了执行SQL方法，翻译异常功能
 
 ```java
 // =============================主要源码===========================================
