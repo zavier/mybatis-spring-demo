@@ -4,3 +4,5 @@ CREATE TABLE `t_user` (
   `user_age` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 );
+
+INSERT INTO t_user (id, user_name, user_age) VALUES (1, 'testname', 1);
