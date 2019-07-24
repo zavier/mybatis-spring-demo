@@ -1,4 +1,4 @@
-package com.zavier.demo.dao;
+package com.zavier.demo.mapper;
 
 import com.zavier.demo.entity.UserDO;
 

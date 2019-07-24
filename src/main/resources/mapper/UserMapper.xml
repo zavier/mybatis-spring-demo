@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="com.zavier.demo.dao.UserMapper">
+<mapper namespace="com.zavier.demo.mapper.UserMapper">
     <insert id="save" parameterType="com.zavier.demo.entity.UserDO">
         INSERT INTO t_user (id, user_name, user_age)
         VALUES (#{id}, #{userName}, #{userAge})
