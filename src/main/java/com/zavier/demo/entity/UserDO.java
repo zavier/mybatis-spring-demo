@@ -1,16 +1,16 @@
 package com.zavier.demo.entity;
 
 public class UserDO {
-    private Integer id;
+    private Long userId;
     private String userName;
     private Integer userAge;
 
-    public Integer getId() {
-        return id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getUserName() {
@@ -32,7 +32,7 @@ public class UserDO {
     @Override
     public String toString() {
         return "UserDO{" +
-                "id=" + id +
+                "id=" + userId +
                 ", userName='" + userName + '\'' +
                 ", userAge=" + userAge +
                 '}';

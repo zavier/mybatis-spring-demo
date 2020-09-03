@@ -3,16 +3,16 @@
 
 <mapper namespace="com.zavier.demo.mapper.UserMapper">
     <insert id="save" parameterType="com.zavier.demo.entity.UserDO">
-        INSERT INTO t_user (id, user_name, user_age)
-        VALUES (#{id}, #{userName}, #{userAge})
+        INSERT INTO t_user (user_name, user_age)
+        VALUES (#{userName}, #{userAge})
     </insert>
 
     <select id="findById" resultType="com.zavier.demo.entity.UserDO">
-        SELECT id, user_name, user_age FROM t_user
-        WHERE id = #{userId}
+        SELECT user_id, user_name, user_age FROM t_user
+        WHERE user_id = #{userId}
     </select>
 
     <select id="selectAll" resultType="com.zavier.demo.entity.UserDO">
-        SELECT id, user_name, user_age FROM t_user
+        SELECT user_id, user_name, user_age FROM t_user
     </select>
 </mapper>

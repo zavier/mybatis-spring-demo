@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sharding="http://shardingsphere.apache.org/schema/shardingsphere/sharding"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://shardingsphere.apache.org/schema/shardingsphere/sharding 
+                        http://shardingsphere.apache.org/schema/shardingsphere/sharding/sharding.xsd 
+                        ">
+    
+    <bean id="ds0" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/test" />
+        <property name="username" value="root" />
+        <property name="password" value="root" />
+    </bean>
+
+    <sharding:inline-strategy id="userTableStrategy" sharding-column="user_id" algorithm-expression="t_user$->{user_id % 2}" />
+
+    <sharding:key-generator id="userTableKeyGenerator" column="user_id" type="SNOWFLAKE" />
+
+    <sharding:data-source id="shardingDataSource">
+        <sharding:sharding-rule data-source-names="ds0">
+            <sharding:table-rules>
+                <sharding:table-rule logic-table="t_user" actual-data-nodes="ds0.t_user$->{0..1}"
+                                     table-strategy-ref="userTableStrategy" key-generator-ref="userTableKeyGenerator"/>
+            </sharding:table-rules>
+        </sharding:sharding-rule>
+    </sharding:data-source>
+</beans>

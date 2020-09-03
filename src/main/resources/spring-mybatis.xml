@@ -13,17 +13,17 @@
     <context:property-placeholder location="classpath:jdbc.properties" />
 
     <!-- 使用Spring提供的简单的DataSource -->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="url" value="${jdbc.url}" />
         <property name="driverClassName" value="${jdbc.driverClassName}" />
         <property name="username" value="${jdbc.username}" />
         <property name="password" value="${jdbc.password}" />
-    </bean>
+    </bean>-->
 
     <!-- 声明 SqlSessionFactoryBean -->
     <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!-- 指定数据源 -->
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="shardingDataSource" />
         <!-- 指定Mapper文件所在的路径 -->
         <property name="mapperLocations" value="classpath:mapper/*.xml" />
         <!-- 加载配置文件 -->
@@ -38,9 +38,12 @@
     <bean id="userDao" class="com.zavier.demo.dao.UserDao" />
 
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <constructor-arg ref="dataSource" />
+        <constructor-arg ref="shardingDataSource" />
     </bean>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
+
+
+    <import resource="sharding-jdbc.xml" />
 
 </beans>

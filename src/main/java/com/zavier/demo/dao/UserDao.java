@@ -17,10 +17,7 @@ public class UserDao {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public void save(UserDO userDO, boolean exp) {
-        final int save = userMapper.save(userDO);
-        if (exp) {
-            throw new RuntimeException("rollback...");
-        }
+    public void save(UserDO userDO) {
+        userMapper.save(userDO);
     }
 }

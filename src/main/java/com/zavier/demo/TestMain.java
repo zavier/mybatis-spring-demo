@@ -1,7 +1,6 @@
 package com.zavier.demo;
 
 import com.zavier.demo.dao.UserDao;
-import com.zavier.demo.mapper.UserMapper;
 import com.zavier.demo.entity.UserDO;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -16,18 +15,18 @@ public class TestMain {
         List<UserDO> userDOS = userDao.selectAll();
         System.out.println(userDOS);
 
-        final UserDO userDO = new UserDO();
-        userDO.setId(5);
-        userDO.setUserName("test");
-        userDO.setUserAge(26);
-        try {
-            userDao.save(userDO, true);
-        } catch (Exception e) {
-            // ignore
+        for (int i = 0; i < 10; i++) {
+            final UserDO userDO = new UserDO();
+//            userDO.setUserId(i);
+            userDO.setUserName("test");
+            userDO.setUserAge(26);
+
+            userDao.save(userDO);
         }
 
         userDOS = userDao.selectAll();
         System.out.println(userDOS);
+        System.out.println(userDOS.size());
     }
 
 }
