@@ -1,7 +1,6 @@
 package com.zavier.demo;
 
 import com.zavier.demo.dao.UserDao;
-import com.zavier.demo.mapper.UserMapper;
 import com.zavier.demo.entity.UserDO;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
